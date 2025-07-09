@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alesis Drum Kit Comparison Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .kit-card { transition: all 0.3s ease; }
+        .kit-card:hover { transform: translateY(-4px); }
+        .selected { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .drum-kit-svg { width: 120px; height: 80px; }
+    </style>
+</head>
+<body class="bg-white min-h-screen text-black">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                In partnership with TECHNILINE ELECTRONICS LLC
+            </h1>
+            
+            <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Alesis Drum Kit Explorer
+            </h2>
+            <p class="text-xl text-Black-300 max-w-2xl mx-auto">
+                Compare and explore the complete lineup of Alesis electronic drum kits. Click any kit to see what's included!
+            </p>
+        </div>
+
+        <!-- Kit Selection Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1"" onclick="showKit('crimson3')">
+                <div class="flex justify-center mb-4">
+                    <img src="https://musicmajlis.co/cdn/shop/files/assets_47c5d023e7b3451a86ac03602c65dce8_fda10fba3363418985a84324922c4f6c_600x.webp?v=1744825104" 
+     alt="Crimson III Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg">
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-blue-300">Crimson III</h3>
+                <p class="text-black-300 text-sm mb-4">Nine-piece kit with exclusive mesh heads for realistic playability</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/crimson-iii', '_blank')" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+            
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1"" onclick="showKit('strataPrime')">
+                <div class="flex justify-center mb-4">
+                    <img src="https://musicmajlis.co/cdn/shop/files/alesis-strata-prime-10-piece-electronic-drum-kit-with-touch-screen-drum-module-musicmajlis-1_600x.jpg?v=1738816040" 
+     alt="Strata Prime Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg"> 
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-purple-300">Strata Prime</h3>
+                <p class="text-black-300 text-sm mb-4">Electronic drum kit without compromise - responsive and natural</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/strata-prime', '_blank')" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+            
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1" onclick="showKit('nitroProXL')">
+                <div class="flex justify-center mb-4">
+                   <img src="https://musicmajlis.co/cdn/shop/files/thumbnail_image001_6b57948c-899a-4b62-9b1d-92fac8ff4bac_600x.jpg?v=1751690826" 
+     alt="Nitro Pro XL Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg">
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-green-300">Nitro Pro XL</h3>
+                <p class="text-black-300 text-sm mb-4">Ideal kit to start jamming, recording, and improving</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/nitro-pro-xl', '_blank')" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+            
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1" onclick="showKit('nitroPro')">
+                <div class="flex justify-center mb-4">
+                    <img src="https://musicmajlis.co/cdn/shop/files/5d8d5d8ff5aojkAXoCDaFBswl1xMK44fe9hrXXpU_600x.webp?v=1738819993" 
+     alt="Nitro Pro Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg">
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-yellow-300">Nitro Pro</h3>
+                <p class="text-black-300 text-sm mb-4">Perfect starter kit for jamming and recording</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/nitro-pro', '_blank')" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+            
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1" onclick="showKit('strataCore')">
+                <div class="flex justify-center mb-4">
+                    <img src="https://musicmajlis.co/cdn/shop/files/ALE-STRATACORE_ecf5613d-985d-4ad6-b193-c08a0d408750_600x.webp?v=1738819982" 
+     alt="Strata Core Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg">
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-red-300">Strata Core</h3>
+                <p class="text-black-300 text-sm mb-4">Outstanding playability with compact footprint</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/strata-core', '_blank')" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+            
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1" onclick="showKit('nitroMax')">
+                <div class="flex justify-center mb-4">
+                    <img src="https://musicmajlis.co/cdn/shop/files/alesis-nitro-max-8-piece-electronic-drum-kit-with-mesh-heads-and-bluetooth-musicmajlis-1_600x.jpg?v=1738813885" 
+     alt="Nitro Max Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg">
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-indigo-300">Nitro Max Kit</h3>
+                <p class="text-black-300 text-sm mb-4">Premium mesh feel with unrivalled natural performance</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/nitro-max', '_blank')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+            
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1"" onclick="showKit('debut')">
+                <div class="flex justify-center mb-4">
+                    <img src="https://musicmajlis.co/cdn/shop/products/alesis-debut-kit-electronic-drums-musicmajlis-1_600x.webp?v=1738792554" 
+     alt="Debut Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg">
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-pink-300">Debut Kit</h3>
+                <p class="text-black-300 text-sm mb-4">Complete drumming system in one accessible box</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/debut', '_blank')" class="w-full bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+            
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1" onclick="showKit('surgeMesh')">
+                <div class="flex justify-center mb-4">
+                    <img src="https://musicmajlis.co/cdn/shop/products/alesis-surge-mesh-special-edition-electronic-drum-kit-musicmajlis-1_600x.webp?v=1738809732" 
+     alt="Surge Mesh Special Edition Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg">
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-teal-300">Surge Mesh Special Edition</h3>
+                <p class="text-black-300 text-sm mb-4">Everything young drummers need to learn and improve fast</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/surge-mesh-special-edition', '_blank')" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+            
+            <div class="kit-card bg-white-100 shadow-inner border border-gray-600 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-transform transform hover:-translate-y-1" onclick="showKit('turboMesh')">
+                <div class="flex justify-center mb-4">
+                    <img src="https://musicmajlis.co/cdn/shop/products/alesis-turbo-mesh-electronic-drum-kit-musicmajlis-1_600x.webp?v=1738766131" 
+     alt="Turbo Mesh Drum Kit" 
+     class="w-full h-auto max-w-xs object-cover rounded-lg">
+
+                </div>
+                <h3 class="text-xl font-semibold mb-2 text-orange-300">Turbo Mesh Kit</h3>
+                <p class="text-black-300 text-sm mb-4">Complete 7-piece kit with next-generation mesh technology</p>
+                <button onclick="event.stopPropagation(); window.open('https://alesis.com/products/turbo-mesh', '_blank')" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    Explore Kit →
+                </button>
+            </div>
+        </div>
+
+        <!-- Kit Details Display -->
+        <div id="kitDetails" class="hidden fade-in bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h2 id="kitTitle" class="text-3xl font-bold mb-2"></h2>
+                    <p id="kitDescription" class="text-black-300 text-lg"></p>
+                </div>
+                <button onclick="hideKit()" class="text-black-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-blue-300">🎵 What's Included</h3>
+                    <ul id="kitContents" class="space-y-2 text-black-300"></ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 text-purple-300">✨ Key Features</h3>
+                    <div id="kitFeatures" class="space-y-3"></div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button id="exploreKitBtn" onclick="exploreCurrentKit()" class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    🔗 Explore This Kit on Alesis.com
+                </button>
+            </div>
+        </div>
+
+        <!-- Comparison Mode -->
+        <div class="mt-12 text-center">
+           <button onclick="toggleCompareMode()" id="compareBtn"
+    class="bg-gradient-to-r from-gray-100 to-gray-300 hover:from-gray-200 hover:to-gray-400 text-gray-800 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-md">
+                🔄 Compare Kits Side by Side
+            </button>
+        </div>
+
+        <div id="compareMode" class="hidden mt-8 bg-black/10 backdrop-blur-sm rounded-2xl p-8 border border-black/20">
+            <h3 class="text-2xl font-bold mb-6 text-center">Kit Comparison</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <select id="kit1Select" onchange="updateComparison()" class="w-full bg-black/20 text-black rounded-lg p-3 mb-4">
+                        <option value="">Select first kit...</option>
+                    </select>
+                    <div id="kit1Details" class="space-y-2"></div>
+                </div>
+                <div>
+                    <select id="kit2Select" onchange="updateComparison()" class="w-full bg-black/20 text-black rounded-lg p-3 mb-4">
+                        <option value="">Select second kit...</option>
+                    </select>
+                    <div id="kit2Details" class="space-y-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-16 text-center text-black-400 text-sm">
+            <p>© 2024 Alesis. All rights reserved. | In partnership with TECHNILINE ELECTRONICS</p>
+        </div>
+    </div>
+
+    <script>
+        const drumKits = {
+            crimson3: {
+                name: "Crimson III",
+                description: "Nine-piece electronic drum kit featuring exclusive Alesis mesh drum heads for realistic playability and expression",
+                url: "https://alesis.com/products/crimson-iii",
+                contents: [
+                    "Crimson III Drum Module",
+                    "8\" Mesh Kick Pad",
+                    "12\" Dual-Zone Mesh Snare Pad",
+                    "(2) 8\" Dual-Zone Mesh Tom Pads",
+                    "10\" Dual-Zone Mesh Tom Pad",
+                    "DMPad 12\" Hi-Hat",
+                    "(2) DMPad 12\" Crashes with Choke",
+                    "DMPad 14\" Triple-Zone Ride",
+                    "DMHat Pedal",
+                    "Premium 4-Post Quick Lock Steel Rack",
+                    "Snare Stand"
+                ],
+                features: ["9-piece configuration", "Exclusive mesh heads", "Premium steel rack", "Professional-grade module"]
+            },
+            strataPrime: {
+                name: "Strata Prime",
+                description: "Electronic drum kit without compromise - every detail conceived for responsive and natural experience",
+                url: "https://alesis.com/products/strata-prime",
+                contents: [
+                    "Strata Prime Drum Module",
+                    "14\" dual-zone snare pad",
+                    "8\" dual-zone tom pad",
+                    "10\" dual-zone tom pad",
+                    "12\" dual-zone tom pad",
+                    "14\" dual-zone tom pad",
+                    "18\" triple-zone ride cymbal",
+                    "(2) 16\" triple-zone crash cymbals w/ choke",
+                    "14\" moveable hi-hat cymbal",
+                    "4-post steel rack"
+                ],
+                features: ["No-compromise design", "Large cymbal sizes", "Triple-zone cymbals", "Professional rack system"]
+            },
+            nitroProXL: {
+                name: "Nitro Pro XL",
+                description: "Ideal electronic drum kit to start jamming, recording, and becoming a better drummer",
+                url: "https://alesis.com/products/nitro-pro-xl",
+                contents: [
+                    "Nitro Pro Drum Module",
+                    "10\" Dual-Zone Mesh Snare Pad",
+                    "(4) 8\" Mesh Tom Pads (1 more than Nitro Pro)",
+                    "10\" Hi-Hat Pad",
+                    "(2) 10\" Crash Pads with Choke (1 more than Nitro Pro)",
+                    "10\" Ride Pad",
+                    "Kick Pad Tower",
+                    "Kick Pedal with Kick Drum Beater",
+                    "Hi-Hat Pedal",
+                    "4-Post Steel Rack"
+                ],
+                features: ["Extended configuration", "Extra tom pad", "Extra crash pad", "Complete pedal setup"]
+            },
+            nitroPro: {
+                name: "Nitro Pro",
+                description: "Ideal electronic drum kit to start jamming, recording, and becoming a better drummer",
+                url: "https://alesis.com/products/nitro-pro",
+                contents: [
+                    "Nitro Pro Drum Module",
+                    "10\" Dual-Zone Mesh Snare Pad",
+                    "(3) 8\" Mesh Tom pads",
+                    "10\" Hi-Hat Pad",
+                    "10\" Crash Pad w/ Choke",
+                    "10\" Ride Pad",
+                    "8\" Kick Pad Tower",
+                    "Kick Pedal",
+                    "Hi-Hat Pedal",
+                    "4-Post Steel Rack"
+                ],
+                features: ["Perfect starter kit", "Mesh tom pads", "Complete setup", "Steel rack construction"]
+            },
+            strataCore: {
+                name: "Strata Core",
+                description: "Outstanding playability, exceptional sound quality, and durable curved steel rack with compact footprint",
+                url: "https://alesis.com/products/strata-core",
+                contents: [
+                    "Strata Core Drum Module",
+                    "12\" dual-zone snare pad",
+                    "(2) 8\" dual-zone tom pad",
+                    "10\" dual-zone tom pad",
+                    "14\" triple-zone ride cymbal",
+                    "(2) 12\" 360-degree triple-zone cymbals w/ choke",
+                    "12\" 360-degree triple-zone hi-hat cymbal",
+                    "4-post steel rack",
+                    "Double-braced Snare Stand",
+                    "Left Middle Support Post",
+                    "Cable snake"
+                ],
+                features: ["Compact footprint", "360-degree cymbals", "Curved steel rack", "Professional connectivity"]
+            },
+            nitroMax: {
+                name: "Nitro Max Kit",
+                description: "Premium mesh feel with unrivalled natural performance featuring highly responsive mesh drumhead technology",
+                url: "https://alesis.com/products/nitro-max",
+                contents: [
+                    "Nitro Max Drum Module",
+                    "10\" Dual-Zone Mesh Snare Pad",
+                    "(3) 8\" Mesh Tom pads",
+                    "10\" Hi-Hat Pad",
+                    "10\" Crash Pad w/ Choke",
+                    "10\" Ride Pad",
+                    "Kick Pad Tower",
+                    "Hi-Hat Pedal",
+                    "4-Post Aluminum Rack",
+                    "Cable Snake"
+                ],
+                features: ["Premium mesh technology", "Aluminum rack", "Responsive drumheads", "Professional connectivity"]
+            },
+            debut: {
+                name: "Debut Kit",
+                description: "Complete electronic drumming system in one box - playing drums has never been more accessible!",
+                url: "https://alesis.com/products/debut",
+                contents: [
+                    "Debut Drum Module",
+                    "6\" Mesh Snare Pad (Single Zone)",
+                    "(3) 6\" Mesh Tom Pads (Single Zone)",
+                    "10\" Hi-Hat Pad",
+                    "10\" Crash Cymbal Pad with Choke",
+                    "10\" Ride Cymbal Pad"
+                ],
+                features: ["Complete beginner system", "Accessible design", "All-in-one box", "Easy setup"]
+            },
+            surgeMesh: {
+                name: "Surge Mesh Special Edition",
+                description: "Electronic drum kit providing everything young people need to learn to play drums and get good fast",
+                url: "https://alesis.com/products/surge-mesh-special-edition",
+                contents: [
+                    "Surge Drum Module",
+                    "10\" Dual-Zone Mesh Snare Pad",
+                    "(3) 8\" Dual-Zone Mesh Tom Pads",
+                    "8\" Mesh Kick Pad Tower",
+                    "10\" Hi-Hat Cymbal",
+                    "10\" Crash Cymbal with Choke",
+                    "10\" Ride Cymbal with Choke",
+                    "Kick Pedal",
+                    "Hi-Hat Pedal",
+                    "Premium 4-post chrome rack",
+                    "Cable Snake"
+                ],
+                features: ["Youth-focused design", "Premium chrome rack", "Dual-zone mesh pads", "Complete pedal setup"]
+            },
+            turboMesh: {
+                name: "Turbo Mesh Kit",
+                description: "Complete 7-piece electronic drum kit centered around next-generation Alesis mesh head drum technology",
+                url: "https://alesis.com/products/turbo-mesh",
+                contents: [
+                    "Turbo Drum Module",
+                    "Power Adapter",
+                    "Cable Snake",
+                    "User Guide",
+                    "Safety & Warranty Manual"
+                ],
+                features: ["Next-generation mesh technology", "7-piece configuration", "Complete documentation", "Professional connectivity"]
+            }
+        };
+
+        let currentKitId = null;
+
+        function showKit(kitId) {
+            currentKitId = kitId;
+            const kit = drumKits[kitId];
+            document.getElementById('kitTitle').textContent = kit.name;
+            document.getElementById('kitDescription').textContent = kit.description;
+            
+            const contentsList = document.getElementById('kitContents');
+            contentsList.innerHTML = '';
+            kit.contents.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center space-x-2';
+                li.innerHTML = `<span class="text-green-400">✓</span><span>${item}</span>`;
+                contentsList.appendChild(li);
+            });
+            
+            const featuresList = document.getElementById('kitFeatures');
+            featuresList.innerHTML = '';
+            kit.features.forEach(feature => {
+                const div = document.createElement('div');
+                div.className = 'bg-white/10 rounded-lg p-3';
+                div.innerHTML = `<span class="text-yellow-400">⭐</span> ${feature}`;
+                featuresList.appendChild(div);
+            });
+            
+            document.getElementById('kitDetails').classList.remove('hidden');
+            document.getElementById('kitDetails').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function hideKit() {
+            document.getElementById('kitDetails').classList.add('hidden');
+            currentKitId = null;
+        }
+
+        function exploreCurrentKit() {
+            if (currentKitId && drumKits[currentKitId]) {
+                window.open(drumKits[currentKitId].url, '_blank');
+            }
+        }
+
+        function toggleCompareMode() {
+            const compareMode = document.getElementById('compareMode');
+            const btn = document.getElementById('compareBtn');
+            
+            if (compareMode.classList.contains('hidden')) {
+                compareMode.classList.remove('hidden');
+                btn.textContent = '❌ Close Comparison';
+                populateSelects();
+            } else {
+                compareMode.classList.add('hidden');
+                btn.textContent = '🔄 Compare Kits Side by Side';
+            }
+        }
+
+        function populateSelects() {
+            const select1 = document.getElementById('kit1Select');
+            const select2 = document.getElementById('kit2Select');
+            
+            const kitOptions = [
+                { value: 'crimson3', name: 'Crimson III' },
+                { value: 'strataPrime', name: 'Strata Prime' },
+                { value: 'nitroProXL', name: 'Nitro Pro XL' },
+                { value: 'nitroPro', name: 'Nitro Pro' },
+                { value: 'strataCore', name: 'Strata Core' },
+                { value: 'nitroMax', name: 'Nitro Max Kit' },
+                { value: 'debut', name: 'Debut Kit' },
+                { value: 'surgeMesh', name: 'Surge Mesh Special Edition' },
+                { value: 'turboMesh', name: 'Turbo Mesh Kit' }
+            ];
+            
+            [select1, select2].forEach(select => {
+                select.innerHTML = '<option value="">Select a kit...</option>';
+                kitOptions.forEach(kit => {
+                    const option = document.createElement('option');
+                    option.value = kit.value;
+                    option.textContent = kit.name;
+                    option.style.color = 'black';
+                    select.appendChild(option);
+                });
+            });
+        }
+
+        function updateComparison() {
+            const kit1Id = document.getElementById('kit1Select').value;
+            const kit2Id = document.getElementById('kit2Select').value;
+            
+            updateKitDetails('kit1Details', kit1Id);
+            updateKitDetails('kit2Details', kit2Id);
+        }
+
+        function updateKitDetails(containerId, kitId) {
+            const container = document.getElementById(containerId);
+            
+            if (!kitId) {
+                container.innerHTML = '<p class="text-black-400 text-center py-8">Select a kit to see details</p>';
+                return;
+            }
+            
+            const kit = drumKits[kitId];
+            const otherKitId = containerId === 'kit1Details' ? document.getElementById('kit2Select').value : document.getElementById('kit1Select').value;
+            const otherKit = otherKitId ? drumKits[otherKitId] : null;
+            
+            // Function to check if item is unique to this kit
+            const isUnique = (item, currentKit, compareKit) => {
+                if (!compareKit) return false;
+                return !compareKit.contents.some(otherItem => 
+                    otherItem.toLowerCase().includes(item.toLowerCase().split('(')[0].trim()) ||
+                    item.toLowerCase().includes(otherItem.toLowerCase().split('(')[0].trim())
+                );
+            };
+            
+            // Function to check if feature is unique
+            const isFeatureUnique = (feature, currentKit, compareKit) => {
+                if (!compareKit) return false;
+                return !compareKit.features.some(otherFeature => 
+                    otherFeature.toLowerCase().includes(feature.toLowerCase()) ||
+                    feature.toLowerCase().includes(otherFeature.toLowerCase())
+                );
+            };
+            
+            container.innerHTML = `
+                <div class="bg-white/5 rounded-lg p-6 border border-white/10">
+                    <h4 class="font-semibold text-xl mb-3 text-blue-300">${kit.name}</h4>
+                    <p class="text-sm text-gray-300 mb-4 leading-relaxed">${kit.description}</p>
+                    
+                    <h5 class="font-medium text-lg mb-3 text-purple-300">📦 What's Included</h5>
+                    <div class="space-y-2 mb-4">
+                        ${kit.contents.map(item => {
+                            const unique = isUnique(item, kit, otherKit);
+                            return `<div class="text-sm flex items-start space-x-2 ${unique ? 'bg-yellow-500/20 border border-yellow-500/40 rounded px-2 py-1' : ''}">
+                                <span class="text-green-400 mt-0.5">✓</span>
+                                <span class="flex-1 ${unique ? 'text-yellow-200 font-medium' : ''}">${item}</span>
+                                ${unique ? '<span class="text-yellow-400 text-xs">UNIQUE</span>' : ''}
+                            </div>`;
+                        }).join('')}
+                    </div>
+                    
+                    <h5 class="font-medium text-lg mb-3 text-yellow-300">⭐ Key Features</h5>
+                    <div class="space-y-2 mb-4">
+                        ${kit.features.map(feature => {
+                            const unique = isFeatureUnique(feature, kit, otherKit);
+                            return `<div class="text-sm rounded px-3 py-2 ${unique ? 'bg-yellow-500/20 border border-yellow-500/40 text-yellow-200 font-medium' : 'bg-white/10'}">${feature}${unique ? ' ⚡' : ''}</div>`;
+                        }).join('')}
+                    </div>
+                    
+                    <div class="text-center space-y-3">
+                        <span class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                            ${kit.contents.length} Components Total
+                        </span>
+                        <br>
+                        <button onclick="window.open('${kit.url}', '_blank')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                            Explore Kit →
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.kit-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in');
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95c65964f5e64b2d',t:'MTc1MjA0ODY3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
